@@ -1,0 +1,24 @@
+import PoincareMT.Proofs.M35.Uniqueness.Heat.ValueInitial.RawSlab
+
+set_option autoImplicit false
+set_option linter.hashCommand false
+
+open PoincareMT.M35.Uniqueness.Heat.ValueInitial
+
+#print axioms scalar_heat_form_energy
+#print axioms initialForm_energy
+#print axioms initialFormPath_memLp
+#print axioms initialFormPath_graph
+#print axioms initialValuePath_integral
+#print axioms exists_mixed_value_initial_integral_heat
+#print axioms exists_nonautonomous_value_initial_heat
+#print axioms exists_equivalent_value_initial_heat
+#print axioms exists_principal_vector_value_initial_heat
+#print axioms exists_uniform_mixed_step
+#print axioms exists_raw_slab_cutoff_ellipticity
+#print axioms exists_raw_uniform_value_restart
+#print axioms memLp_joinTime
+#print axioms tested_integral_hasDeriv
+#print axioms principalValueHeat_join
+#print axioms exists_principal_value_heat_of_uniform_restart
+#print axioms exists_raw_compact_vector_heat_on_slab

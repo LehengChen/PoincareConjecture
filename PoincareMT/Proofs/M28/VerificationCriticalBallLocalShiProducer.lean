@@ -1,0 +1,7 @@
+import PoincareMT.Proofs.M28.Sec10_3_Tube.CriticalBallLocalShiProducer
+
+set_option autoImplicit false
+
+#print axioms PoincareMT.M28.CounterexampleNeckFamily.exists_criticalBallLocalShi_accuracy
+#print axioms PoincareMT.M28.GeneralizedStrongNeck.scaled_curvatureDerivativeNorm
+#print axioms PoincareMT.M28.inverse_sqrt_le_of_normalized_scalar

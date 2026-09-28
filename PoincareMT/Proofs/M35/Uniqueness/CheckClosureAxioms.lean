@@ -1,0 +1,28 @@
+import PoincareMT.Proofs.M35.RawFlow.RotationSymmetry
+import PoincareMT.Proofs.M35.RawFlow.IntrinsicSpatialMetric
+import PoincareMT.Proofs.M35.Uniqueness.Heat.SchwartzMixedSmooth
+import PoincareMT.Proofs.M35.Uniqueness.Heat.PointwiseHeat
+import PoincareMT.Proofs.M35.Sec12_4_Uniqueness.GaugeRecovery
+
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation02_hasDerivAt_time
+#print axioms PoincareMT.M35.Uniqueness.initial_coordinateRotation02Generator_killing
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation02_isometry_of_killing
+#print axioms PoincareMT.M35.Uniqueness.exists_rotation_angle
+#print axioms PoincareMT.M35.Uniqueness.exists_two_coordinate_rotations_axis
+#print axioms PoincareMT.M35.Uniqueness.rotation_axis_stabilizer_block
+#print axioms PoincareMT.M35.Uniqueness.exists_coordinateRotation_of_fixes_axis
+#print axioms PoincareMT.M35.Uniqueness.exists_coordinate_rotation_decomposition
+#print axioms PoincareMT.M35.Uniqueness.rotation_invariant_of_coordinate_killing
+#print axioms PoincareMT.M35.RawFlow.rotation_invariant_of_compact_heat
+#print axioms PoincareMT.M35.Uniqueness.Heat.schwartz_fderiv_eq_coordinate_sum
+#print axioms PoincareMT.M35.Uniqueness.Heat.contDiffOn_schwartz_family_of_mixed_jets
+#print axioms PoincareMT.M35.Uniqueness.Heat.localizedDirichletValue_test_pair
+#print axioms PoincareMT.M35.Uniqueness.Heat.weak_heat_local_test
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_weak_heat_local_test
+#print axioms PoincareMT.M35.Uniqueness.Heat.schwartz_eqOn_of_local_tests
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_weak_heat_pointwise
+#print axioms PoincareMT.M35.Uniqueness.trajectory_eq_of_closed_trace
+#print axioms PoincareMT.M35.Uniqueness.trajectories_eq_of_local_spatial_bound
+#print axioms PoincareMT.M35.Uniqueness.gaugePullbackMetric_symm_recover
+#print axioms PoincareMT.M35.Uniqueness.metric_eq_of_equal_gauges_and_pushforwards
+#print axioms PoincareMT.M35.Uniqueness.rotational_rescale_form

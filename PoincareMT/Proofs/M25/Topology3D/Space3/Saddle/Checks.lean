@@ -1,0 +1,674 @@
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.AmbientMorseChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.AmbientHeightCompression
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.BallTransport
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.BallBoundaryContainment
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.BoundedHeightTracks
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CapCompressionBuffers
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CapHeightCompression
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HeightReversal
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HeightReversalData
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HeightPreservingCases
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HeightPreservingData
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HeightPreservingSlice
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HeightTubeTransport
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HyperbolaDiscArcs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HorizontalMembership
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.HorizontalTimeFlow
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.LocalizedClockGraph
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.LowerLevelHeightCompression
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.MorseBridgeCoordinates
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.MorseRadialChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PieceData
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.RawPieceBandInput
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.RawPieceBand
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PlanarFamilyHeightLift
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceRadialCorrection
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceBallChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceUpperRegularity
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedReferenceModel
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedLowerEstimates
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedLowerRoots
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedLowerSlices
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedLowerRadialFlow
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedLowerRegularity
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedReferenceFillings
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedReferenceCollar
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedReferenceOrderedChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NestedReferenceBufferedChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.LowerLevelTransport
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.LowerCutMotion
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedLowerExteriorArcs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedSourceChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedSourceGeometry
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedWallCircleFamily
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedComparisonFillings
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedOrientedExteriorArcs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedEndpointCoordinates
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedConnectorImage
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedCircleImages
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedReparametrizedArcs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedPhysicalPair
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonRadialFields
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonRadialEvolution
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonMiddleClockData
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonMiddleExterior
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonMiddleIsotopy
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedRawMiddle
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.MiddleExteriorCoordinates
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceMiddleNative
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedMiddleNative
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.MiddleHeightLiftImages
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NativeProjectedFields
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedWallGerms
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.RelativeExteriorArc
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ExteriorFlowBarrier
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedWallField
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedWallTransport
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CircleIntervalComplement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CircleAngularGeometry
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.TwoEndedProfileBall
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SourceCircleComplement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SourceCircleCut
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.LowerEndTube
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.LowerSourceSublevel
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CoreTruncationRetraction
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ConnectedUpperLevel
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.UpperCoreFlow
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.UpperCoreLabel
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.UpperCapBandTube
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.UpperLeg
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.UpperEndReplacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedThreeEndReplacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.TwoProfileNativeModel
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NorthBoundaryPatchPullback
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.AngularReconnection
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedWallNoBypass
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedTwoExteriorArcs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedLevelGluing
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SelectedClosedCircleFamily
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.TwoProfileEndBall
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PlanarFamilyDisjointness
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PlanarBoundaryContainment
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PlanarBallChartExtension
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonCapExteriorFilling
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CommonExteriorHalfStrip
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ComparisonCircleAssembly
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ComparisonParameters
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.IntegralCornerChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.CrosscutFilledCells
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SmoothTransitionRegular
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ShortSectorTemplates
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PlanarCurveNormalChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedAnnularBuffer
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedCommonCapInputs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedPairArcIsotopy
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedReferencePlacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceMeridian
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceComparisonFillings
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceExteriorBounds
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceLowerSlices
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceExteriorCoordinates
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.SphereChartRadialLift
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceExteriorStrip
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceEndAxis
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.RoundProfileNativeModel
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceSourceVelocity
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceLowerPlanarChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceQuarticChart
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceEndDiscs
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceRadialField
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceAmbientTransport
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceLowerFixedEnd
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceUpperFixedEnd
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceFixedEndGeometry
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceCutMotion
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceLowerLabelImages
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceMovedEndGeometry
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.TwoBandLabelMatching
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.EndpointReparametrization
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ContainedProfileBall
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ContainedNorthCapCommonCharts
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NorthCapEndTransport
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedLowerEndGeometry
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedLowerEndLaterScales
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.MovedLowerEndReplacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ReferenceMovedEndReplacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ThreeCapAlignment
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.TargetThreeEndReplacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedBall
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.NonnestedLowerEndReplacement
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.RelativeHeightField
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.RelativeBand
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ScalarHeightCompression
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.ShortPiece
+
+/-!
+# Saddle helper statement and axiom audit
+
+Check every explicit declaration in the initial saddle local-chart,
+relative-field, scalar-flow and exact ball-transport stages. Hatcher, Notes on Basic
+3-Manifold Topology, Lemma 1.2, pp. 2-3. These checks do not assert
+the two final saddle ball theorems.
+-/
+
+set_option autoImplicit false
+-- This audit module intentionally prints every declaration's type and axioms.
+set_option linter.hashCommand false
+-- Universe parameters are part of the recorded audit, not a production proof option.
+set_option linter.style.setOption false
+set_option pp.universes true
+set_option pp.maxSteps 100000
+set_option pp.deepTerms true
+
+open PoincareMT.M25.Topology3D
+
+#check @exists_saddle_nonnested_annular_buffer
+#print axioms exists_saddle_nonnested_annular_buffer
+
+#check @exists_saddle_nonnested_lower_end_replacement
+#print axioms exists_saddle_nonnested_lower_end_replacement
+
+#check @saddle_smoothTransition_regular
+#print axioms saddle_smoothTransition_regular
+
+#check @exists_saddle_nonnested_lower_end_geometry
+#print axioms exists_saddle_nonnested_lower_end_geometry
+
+#check @saddle_crosscut_cells_inside_outside
+#print axioms saddle_crosscut_cells_inside_outside
+
+#check @exists_saddle_north_cap_end_transport
+#print axioms exists_saddle_north_cap_end_transport
+
+#check @exists_contained_north_cap_common_charts
+#print axioms exists_contained_north_cap_common_charts
+
+#check @saddle_planar_family_closedRegion_disjoint
+#print axioms saddle_planar_family_closedRegion_disjoint
+#check @saddle_planar_closedRegion_subset_of_boundary_subset
+#print axioms saddle_planar_closedRegion_subset_of_boundary_subset
+#check @exists_saddle_integral_corner_chart
+#print axioms exists_saddle_integral_corner_chart
+#check @exists_saddle_contained_profile_ball
+#print axioms exists_saddle_contained_profile_ball
+
+#check @saddle_selected_wall_no_bypass
+#print axioms saddle_selected_wall_no_bypass
+#check @saddle_selected_level_gluing
+#print axioms saddle_selected_level_gluing
+#check @exists_saddle_selected_closed_circle_family
+#print axioms exists_saddle_selected_closed_circle_family
+#check @exists_two_profile_end_ball
+#print axioms exists_two_profile_end_ball
+
+#check @SaddleLowerLevelData.source_sublevel_decomposition
+#print axioms SaddleLowerLevelData.source_sublevel_decomposition
+#check @exists_saddle_core_truncation_retraction
+#print axioms exists_saddle_core_truncation_retraction
+#check @exists_two_profile_native_ball_model
+#print axioms exists_two_profile_native_ball_model
+#check @exists_north_boundary_patch_pullback
+#print axioms exists_north_boundary_patch_pullback
+#check @exists_saddle_periodic_polar_family
+#print axioms exists_saddle_periodic_polar_family
+#check @exists_saddle_angular_reconnection
+#print axioms exists_saddle_angular_reconnection
+
+#check @saddle_ball_closedRegion_subset_of_boundary_subset
+#print axioms saddle_ball_closedRegion_subset_of_boundary_subset
+
+#check @exists_saddle_end_height_clamp
+#print axioms exists_saddle_end_height_clamp
+#check @exists_saddle_end_circle_buffer
+#print axioms exists_saddle_end_circle_buffer
+#check @exists_saddle_end_disc_buffer
+#print axioms exists_saddle_end_disc_buffer
+#check @exists_saddle_end_chart_reparam
+#print axioms exists_saddle_end_chart_reparam
+#check @exists_saddle_end_fiber_chart
+#print axioms exists_saddle_end_fiber_chart
+#check @exists_saddle_end_common_circles
+#print axioms exists_saddle_end_common_circles
+#check @exists_saddle_cap_source_annulus
+#print axioms exists_saddle_cap_source_annulus
+#check @exists_saddle_lower_end_family
+#print axioms exists_saddle_lower_end_family
+#check @exists_saddle_end_aligned_stack
+#print axioms exists_saddle_end_aligned_stack
+#check @exists_saddle_lower_end_tube
+#print axioms exists_saddle_lower_end_tube
+
+#check @exists_source_circle_complement
+#print axioms exists_source_circle_complement
+
+-- Expose the four actual profile proof fields in the local model expression.
+set_option pp.proofs true in
+#check @exists_two_ended_profile_ball
+#print axioms exists_two_ended_profile_ball
+
+#check @collar_horizontal_mfderiv_injective_at_critical
+#print axioms collar_horizontal_mfderiv_injective_at_critical
+#check @exists_collar_critical_horizontal_chart
+#print axioms exists_collar_critical_horizontal_chart
+#check @exists_collar_ambient_morse_chart
+#print axioms exists_collar_ambient_morse_chart
+#check @BallNeighborhoodChart.mapDiffeomorph
+#print axioms BallNeighborhoodChart.mapDiffeomorph
+#check @BallNeighborhoodChart.mapDiffeomorph_apply
+#print axioms BallNeighborhoodChart.mapDiffeomorph_apply
+#check @BallNeighborhoodChart.mapDiffeomorph_boundary
+#print axioms BallNeighborhoodChart.mapDiffeomorph_boundary
+#check @exists_ball_of_diffeomorphic_image
+#print axioms exists_ball_of_diffeomorphic_image
+#check @exists_relative_collar_height_field
+#print axioms exists_relative_collar_height_field
+#check @boundedFlow_strictMono
+#print axioms boundedFlow_strictMono
+#check @boundedFlow_eq_scalar_contraction
+#print axioms boundedFlow_eq_scalar_contraction
+#check @horizontalTimeFlowDiffeomorph
+#print axioms horizontalTimeFlowDiffeomorph
+#check @horizontalTimeFlowDiffeomorph_apply
+#print axioms horizontalTimeFlowDiffeomorph_apply
+#check @horizontalTimeFlowDiffeomorph_symm_apply
+#print axioms horizontalTimeFlowDiffeomorph_symm_apply
+#check @horizontalTimeFlowDiffeomorph_contDiff
+#print axioms horizontalTimeFlowDiffeomorph_contDiff
+#check @horizontalTimeFlowDiffeomorph_tsupport_subset
+#print axioms horizontalTimeFlowDiffeomorph_tsupport_subset
+#check @exists_scalar_height_compression
+#print axioms exists_scalar_height_compression
+#check @heightPlaneCoordinates_neg_snd
+#print axioms heightPlaneCoordinates_neg_snd
+#check @heightReversalPlaneDiffeomorph
+#print axioms heightReversalPlaneDiffeomorph
+#check @heightReversalPlaneDiffeomorph_apply
+#print axioms heightReversalPlaneDiffeomorph_apply
+#check @heightReversalPlaneDiffeomorph_symm_apply
+#print axioms heightReversalPlaneDiffeomorph_symm_apply
+#check @BallNeighborhoodChart.mapDiffeomorph_inside
+#print axioms BallNeighborhoodChart.mapDiffeomorph_inside
+#check @BallNeighborhoodChart.mapDiffeomorph_closedRegion
+#print axioms BallNeighborhoodChart.mapDiffeomorph_closedRegion
+#check @boundedFlow_norm_sub_le
+#print axioms boundedFlow_norm_sub_le
+#check @exists_boundedFlow_unit_height_interval
+#print axioms exists_boundedFlow_unit_height_interval
+#check @clockEvolution_norm_sub_le
+#print axioms clockEvolution_norm_sub_le
+#check @heightTransportTube
+#print axioms heightTransportTube
+#check @heightTransportTube_apply
+#print axioms heightTransportTube_apply
+#check @heightTransportTube_symm_apply
+#print axioms heightTransportTube_symm_apply
+#check @heightTransportTube_mem_source
+#print axioms heightTransportTube_mem_source
+#check @heightTransportTube_mem_target
+#print axioms heightTransportTube_mem_target
+#check @heightTransportTube_contDiffOn
+#print axioms heightTransportTube_contDiffOn
+#check @heightTransportTube_contDiffOn_symm
+#print axioms heightTransportTube_contDiffOn_symm
+#check @heightTransportTube_closedDisc_source
+#print axioms heightTransportTube_closedDisc_source
+#check @heightTransportTube_height
+#print axioms heightTransportTube_height
+#check @heightTransportTube_reparametrized_apply
+#print axioms heightTransportTube_reparametrized_apply
+#check @exists_compact_ambient_height_compression
+#print axioms exists_compact_ambient_height_compression
+#check @localizedClockGraphDiffeomorph
+#print axioms localizedClockGraphDiffeomorph
+#check @localizedClockGraphDiffeomorph_apply
+#print axioms localizedClockGraphDiffeomorph_apply
+#check @localizedClockGraphDiffeomorph_symm_apply
+#print axioms localizedClockGraphDiffeomorph_symm_apply
+#check @localizedClockGraphDiffeomorph_contDiff
+#print axioms localizedClockGraphDiffeomorph_contDiff
+#check @localizedClockGraphDiffeomorph_zero
+#print axioms localizedClockGraphDiffeomorph_zero
+#check @localizedClockGraphDiffeomorph_height
+#print axioms localizedClockGraphDiffeomorph_height
+#check @localizedClockGraphDiffeomorph_fixed_cylinder
+#print axioms localizedClockGraphDiffeomorph_fixed_cylinder
+#check @localizedClockGraphDiffeomorph_fixed_of_cutoff_zero
+#print axioms localizedClockGraphDiffeomorph_fixed_of_cutoff_zero
+#check @localizedClockGraphDiffeomorph_tsupport_subset
+#print axioms localizedClockGraphDiffeomorph_tsupport_subset
+#check @localizedClockGraphDiffeomorph_hasCompactSupport
+#print axioms localizedClockGraphDiffeomorph_hasCompactSupport
+#check @localizedClockGraphDiffeomorph_mem_symm_image
+#print axioms localizedClockGraphDiffeomorph_mem_symm_image
+#check @horizontalBand_clockEvolution_mem_iff_of_height_tracks
+#print axioms horizontalBand_clockEvolution_mem_iff_of_height_tracks
+#check @horizontalBand_clockEvolution_mem_iff_of_margin
+#print axioms horizontalBand_clockEvolution_mem_iff_of_margin
+#check @morseBridgeDiffeomorph
+#print axioms morseBridgeDiffeomorph
+#check @morseBridgeDiffeomorph_apply
+#print axioms morseBridgeDiffeomorph_apply
+#check @morseBridgeDiffeomorph_symm_apply
+#print axioms morseBridgeDiffeomorph_symm_apply
+#check @morseBridgeDiffeomorph_residuals
+#print axioms morseBridgeDiffeomorph_residuals
+#check @morseBridgeDiffeomorph_image_lens
+#print axioms morseBridgeDiffeomorph_image_lens
+#check @morseBridgeDiffeomorph_buffer_bounds
+#print axioms morseBridgeDiffeomorph_buffer_bounds
+#check @morseBridgeChart
+#print axioms morseBridgeChart
+#check @morseBridgeChart_source_target
+#print axioms morseBridgeChart_source_target
+#check @morseBridgeChart_smooth
+#print axioms morseBridgeChart_smooth
+#check @morseBridgeChart_identities
+#print axioms morseBridgeChart_identities
+#check @morseBridgeChart_buffer_subset_source
+#print axioms morseBridgeChart_buffer_subset_source
+#check @morseRadialDisc_geometry
+#print axioms morseRadialDisc_geometry
+#check @morseRadialChart_geometry
+#print axioms morseRadialChart_geometry
+#check @SaddlePieceData
+#print axioms SaddlePieceData
+#check @SaddleLowerLevelData
+#print axioms SaddleLowerLevelData
+#check @SaddlePieceData.nonnested
+#print axioms SaddlePieceData.nonnested
+#check @SaddlePieceData.nested
+#print axioms SaddlePieceData.nested
+#print SaddlePieceData
+#print SaddleLowerLevelData
+#check @SaddlePieceData.mk
+#check @SaddleLowerLevelData.mk
+#check @SurgeryCapTag.reverseHeight
+#print axioms SurgeryCapTag.reverseHeight
+#check @SurgeryCapTag.reverseHeight_tube
+#print axioms SurgeryCapTag.reverseHeight_tube
+#check @SurgeryCapTag.reverseHeight_sets
+#print axioms SurgeryCapTag.reverseHeight_sets
+#check @SaddlePieceData.reverseHeight
+#print axioms SaddlePieceData.reverseHeight
+#check @SaddlePieceData.reverseHeight_geometry
+#print axioms SaddlePieceData.reverseHeight_geometry
+#check @exists_surgeryCap_compression_widths
+#print axioms exists_surgeryCap_compression_widths
+#check @exists_finite_surgeryCap_compression_buffers
+#print axioms exists_finite_surgeryCap_compression_buffers
+#check @IsCollarEmbedding.postcompose_diffeomorph
+#print axioms IsCollarEmbedding.postcompose_diffeomorph
+#check @SurgeryCapTag.heightCompress
+#print axioms SurgeryCapTag.heightCompress
+#check @SurgeryCapTag.heightCompress_sourceCap
+#print axioms SurgeryCapTag.heightCompress_sourceCap
+#check @SurgeryCapTag.heightCompress_sourceSeam
+#print axioms SurgeryCapTag.heightCompress_sourceSeam
+#check @SurgeryCapTag.heightCompress_cap
+#print axioms SurgeryCapTag.heightCompress_cap
+#check @SurgeryCapTag.heightCompress_seam
+#print axioms SurgeryCapTag.heightCompress_seam
+#check @SaddlePieceData.heightCompress
+#print axioms SaddlePieceData.heightCompress
+#check @SaddleLowerLevelData.heightCompress
+#print axioms SaddleLowerLevelData.heightCompress
+#check @exists_short_saddle_piece
+#print axioms exists_short_saddle_piece
+#check @exists_raw_saddle_piece_band_input
+#print axioms exists_raw_saddle_piece_band_input
+#check @heightPreservingSliceDiffeomorph
+#print axioms heightPreservingSliceDiffeomorph
+#check @heightPreservingSliceDiffeomorph_geometry
+#print axioms heightPreservingSliceDiffeomorph_geometry
+#check @SurgeryCapTag.mapHeightPreserving
+#print axioms SurgeryCapTag.mapHeightPreserving
+#check @SurgeryCapTag.mapHeightPreserving_geometry
+#print axioms SurgeryCapTag.mapHeightPreserving_geometry
+#check @SaddlePieceData.mapHeightPreserving
+#print axioms SaddlePieceData.mapHeightPreserving
+#check @SaddlePieceData.mapHeightPreserving_geometry
+#print axioms SaddlePieceData.mapHeightPreserving_geometry
+#check @SaddleLowerLevelData.mapHeightPreserving
+#print axioms SaddleLowerLevelData.mapHeightPreserving
+#check @SaddleLowerLevelData.mapHeightPreserving_geometry
+#print axioms SaddleLowerLevelData.mapHeightPreserving_geometry
+#check @SaddlePieceData.mapHeightPreserving_cases
+#print axioms SaddlePieceData.mapHeightPreserving_cases
+#check @exists_relative_collar_band_verticalization
+#print axioms exists_relative_collar_band_verticalization
+#check @exists_raw_saddle_piece_band_verticalization
+#print axioms exists_raw_saddle_piece_band_verticalization
+#check @planarDiffeomorphFamily_contDiff_symm
+#print axioms planarDiffeomorphFamily_contDiff_symm
+#check @exists_compact_planar_family_height_lift
+#print axioms exists_compact_planar_family_height_lift
+#check @exists_reference_ball_radial_correction
+#print axioms exists_reference_ball_radial_correction
+#check @nonnestedReferenceDiffeomorph
+#print axioms nonnestedReferenceDiffeomorph
+#check @nonnestedReferenceDiffeomorph_apply_symm
+#print axioms nonnestedReferenceDiffeomorph_apply_symm
+#check @nonnestedReferenceBallChart
+#print axioms nonnestedReferenceBallChart
+#check @nonnestedReferenceBallChart_regions
+#print axioms nonnestedReferenceBallChart_regions
+#check @nonnestedReferenceBallChart_morse_box
+#print axioms nonnestedReferenceBallChart_morse_box
+#check @nestedReferenceDiffeomorph
+#print axioms nestedReferenceDiffeomorph
+#check @nestedReferenceDiffeomorph_apply_symm
+#print axioms nestedReferenceDiffeomorph_apply_symm
+#check @nestedReferenceBallChart
+#print axioms nestedReferenceBallChart
+#check @nestedReferenceBallChart_regions
+#print axioms nestedReferenceBallChart_regions
+#check @exists_unique_nestedReference_saddle_root
+#print axioms exists_unique_nestedReference_saddle_root
+#check @exists_nestedReference_collar
+#print axioms exists_nestedReference_collar
+#check @exists_saddle_lower_level_transport
+#print axioms exists_saddle_lower_level_transport
+#check exists_nestedReference_ordered_morse_chart
+#print axioms exists_nestedReference_ordered_morse_chart
+#check @exists_saddle_selected_wall_germs
+#print axioms exists_saddle_selected_wall_germs
+#check @exists_relative_exterior_arc_isotopy
+#print axioms exists_relative_exterior_arc_isotopy
+#check @boundedFlow_exterior_level_images
+#print axioms boundedFlow_exterior_level_images
+#check @exists_saddle_selected_wall_field
+#print axioms exists_saddle_selected_wall_field
+#check @exists_saddle_selected_wall_transport
+#print axioms exists_saddle_selected_wall_transport
+#check @exists_circle_interval_complement
+#print axioms exists_circle_interval_complement
+#check @circleAffine_smooth_immersion
+#print axioms circleAffine_smooth_immersion
+#check @circleAffine_injOn
+#print axioms circleAffine_injOn
+#check @exists_circleAffine_extension
+#print axioms exists_circleAffine_extension
+#check @exists_source_circle_pair_complement
+#print axioms exists_source_circle_pair_complement
+#check @exists_saddle_source_circle_cut
+#print axioms exists_saddle_source_circle_cut
+#check @exists_saddle_planar_curve_normal_chart
+#print axioms exists_saddle_planar_curve_normal_chart
+#check @exists_saddle_selected_two_exterior_arcs
+#print axioms exists_saddle_selected_two_exterior_arcs
+#check @exists_saddle_common_cap_exterior_filling
+#print axioms exists_saddle_common_cap_exterior_filling
+#check @exists_saddle_short_sector_templates
+#print axioms exists_saddle_short_sector_templates
+#check @saddle_hyperbola_disc_arcs
+#print axioms saddle_hyperbola_disc_arcs
+#check @exists_saddle_connected_upper_level
+#print axioms exists_saddle_connected_upper_level
+#check @exists_saddle_comparison_parameters
+#print axioms exists_saddle_comparison_parameters
+#check @exists_saddle_upper_core_flow
+#print axioms exists_saddle_upper_core_flow
+#check @exists_saddle_upper_core_label
+#print axioms exists_saddle_upper_core_label
+#check @exists_saddle_common_exterior_half_strip
+#print axioms exists_saddle_common_exterior_half_strip
+#check @exists_saddle_comparison_circle_assembly
+#print axioms exists_saddle_comparison_circle_assembly
+#check @exists_saddle_upper_cap_band_tube
+#print axioms exists_saddle_upper_cap_band_tube
+#check @exists_saddle_upper_leg
+#print axioms exists_saddle_upper_leg
+#check @exists_saddle_planar_ball_chart_extension
+#print axioms exists_saddle_planar_ball_chart_extension
+#check @exists_saddle_upper_end_replacement
+#print axioms exists_saddle_upper_end_replacement
+#check @exists_nonnested_common_cap_inputs
+#print axioms exists_nonnested_common_cap_inputs
+#check @exists_saddle_endpoint_reparametrizations
+#print axioms exists_saddle_endpoint_reparametrizations
+#check @exists_saddle_nonnested_reference_placement
+#print axioms exists_saddle_nonnested_reference_placement
+#check @exists_nonnested_pair_arc_isotopy
+#print axioms exists_nonnested_pair_arc_isotopy
+#check @exists_nonnested_reference_meridian
+#print axioms exists_nonnested_reference_meridian
+#check @exists_nonnested_reference_comparison_fillings
+#print axioms exists_nonnested_reference_comparison_fillings
+#check @nonnested_reference_exterior_scalar_bounds
+#print axioms nonnested_reference_exterior_scalar_bounds
+#check @exists_nonnested_reference_lower_slices
+#print axioms exists_nonnested_reference_lower_slices
+#check @exists_nonnested_reference_exterior_coordinates
+#print axioms exists_nonnested_reference_exterior_coordinates
+#check @exists_sphere_chart_radial_lift
+#print axioms exists_sphere_chart_radial_lift
+#check @exists_nonnested_reference_exterior_strip
+#print axioms exists_nonnested_reference_exterior_strip
+#check @exists_nonnested_reference_end_axis
+#print axioms exists_nonnested_reference_end_axis
+#check @exists_round_profile_native_ball_model
+#print axioms exists_round_profile_native_ball_model
+#check @exists_nonnested_reference_source_velocity
+#print axioms exists_nonnested_reference_source_velocity
+#check @exists_nonnested_reference_lower_planar_chart
+#print axioms exists_nonnested_reference_lower_planar_chart
+#check @exists_nonnested_reference_quartic_chart
+#print axioms exists_nonnested_reference_quartic_chart
+#check @exists_nonnested_reference_end_disc_charts
+#print axioms exists_nonnested_reference_end_disc_charts
+#check @exists_nonnested_reference_radial_field
+#print axioms exists_nonnested_reference_radial_field
+#check @exists_nonnested_reference_ambient_transport
+#print axioms exists_nonnested_reference_ambient_transport
+#check @exists_nonnested_reference_lower_fixed_end
+#print axioms exists_nonnested_reference_lower_fixed_end
+#check @exists_nonnested_reference_upper_fixed_end
+#print axioms exists_nonnested_reference_upper_fixed_end
+#check @exists_nonnested_reference_fixed_end_geometry
+#print axioms exists_nonnested_reference_fixed_end_geometry
+#check @exists_nestedReference_buffered_morse_chart
+#print axioms exists_nestedReference_buffered_morse_chart
+
+#check @PoincareMT.M25.Topology3D.NestedReferenceLower.radial_estimates
+#print axioms PoincareMT.M25.Topology3D.NestedReferenceLower.radial_estimates
+#check @PoincareMT.M25.Topology3D.NestedReferenceLower.exists_smooth_roots
+#print axioms PoincareMT.M25.Topology3D.NestedReferenceLower.exists_smooth_roots
+#check @PoincareMT.M25.Topology3D.NestedReferenceLower.slice_radial_tests
+#print axioms PoincareMT.M25.Topology3D.NestedReferenceLower.slice_radial_tests
+#check @PoincareMT.M25.Topology3D.NestedReferenceLower.exists_radial_filling
+#print axioms PoincareMT.M25.Topology3D.NestedReferenceLower.exists_radial_filling
+#check @PoincareMT.M25.Topology3D.NestedReferenceLower.height_regular
+#print axioms PoincareMT.M25.Topology3D.NestedReferenceLower.height_regular
+#check @PoincareMT.M25.Topology3D.exists_nestedReference_lower_fillings
+#print axioms PoincareMT.M25.Topology3D.exists_nestedReference_lower_fillings
+
+#check @PoincareMT.M25.Topology3D.exists_saddle_upper_end_replacement_protected
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_upper_end_replacement_protected
+#check @PoincareMT.M25.Topology3D.exists_saddle_nonnested_three_end_replacement
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_nonnested_three_end_replacement
+
+#check @PoincareMT.M25.Topology3D.exists_saddle_lower_source_circles
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_lower_source_circles
+#check @PoincareMT.M25.Topology3D.saddle_selected_lower_hyperbola_arcs
+#print axioms PoincareMT.M25.Topology3D.saddle_selected_lower_hyperbola_arcs
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_lower_exterior_arcs
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_lower_exterior_arcs
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_source_chart
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_source_chart
+#check @PoincareMT.M25.Topology3D.saddle_selected_source_geometry
+#print axioms PoincareMT.M25.Topology3D.saddle_selected_source_geometry
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_wall_circle_family
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_wall_circle_family
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_comparison_fillings
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_comparison_fillings
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_oriented_exterior_arcs
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_oriented_exterior_arcs
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_endpoint_coordinates
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_endpoint_coordinates
+#check @PoincareMT.M25.Topology3D.saddle_selected_connector_image
+#print axioms PoincareMT.M25.Topology3D.saddle_selected_connector_image
+#check @PoincareMT.M25.Topology3D.saddle_selected_circle_images
+#print axioms PoincareMT.M25.Topology3D.saddle_selected_circle_images
+#check @PoincareMT.M25.Topology3D.saddle_selected_reparametrized_arcs
+#print axioms PoincareMT.M25.Topology3D.saddle_selected_reparametrized_arcs
+#check @PoincareMT.M25.Topology3D.exists_saddle_selected_physical_pair
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_selected_physical_pair
+#check @PoincareMT.M25.Topology3D.exists_saddle_common_radial_fields
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_common_radial_fields
+#check @PoincareMT.M25.Topology3D.exists_saddle_common_radial_evolution
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_common_radial_evolution
+#check @PoincareMT.M25.Topology3D.saddle_native_projected_fields
+#print axioms PoincareMT.M25.Topology3D.saddle_native_projected_fields
+
+#check @PoincareMT.M25.Topology3D.exists_saddle_common_middle_clock_data
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_common_middle_clock_data
+#check @PoincareMT.M25.Topology3D.saddle_common_middle_exterior_images
+#print axioms PoincareMT.M25.Topology3D.saddle_common_middle_exterior_images
+#check @PoincareMT.M25.Topology3D.exists_saddle_common_middle_isotopy
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_common_middle_isotopy
+#check @PoincareMT.M25.Topology3D.exists_saddle_middle_height_lift_images
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_middle_height_lift_images
+#check @PoincareMT.M25.Topology3D.saddle_middle_exterior_coordinates
+#print axioms PoincareMT.M25.Topology3D.saddle_middle_exterior_coordinates
+#check @PoincareMT.M25.Topology3D.saddle_middle_exterior_source_disc
+#print axioms PoincareMT.M25.Topology3D.saddle_middle_exterior_source_disc
+#check @PoincareMT.M25.Topology3D.saddle_middle_exterior_scaled_source
+#print axioms PoincareMT.M25.Topology3D.saddle_middle_exterior_scaled_source
+#check @PoincareMT.M25.Topology3D.saddle_reference_middle_native_tracks
+#print axioms PoincareMT.M25.Topology3D.saddle_reference_middle_native_tracks
+#check @PoincareMT.M25.Topology3D.saddle_selected_middle_native
+#print axioms PoincareMT.M25.Topology3D.saddle_selected_middle_native
+#check @PoincareMT.M25.Topology3D.exists_saddle_lower_cut_motion
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_lower_cut_motion
+#check @PoincareMT.M25.Topology3D.exists_saddle_nonnested_lower_end_later_scales
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_nonnested_lower_end_later_scales
+#check @PoincareMT.M25.Topology3D.nonnested_reference_positive_height_regular
+#print axioms PoincareMT.M25.Topology3D.nonnested_reference_positive_height_regular
+#check @PoincareMT.M25.Topology3D.exists_saddle_nonnested_raw_middle
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_nonnested_raw_middle
+#check @PoincareMT.M25.Topology3D.exists_nonnested_reference_cut_motion
+#print axioms PoincareMT.M25.Topology3D.exists_nonnested_reference_cut_motion
+#check @PoincareMT.M25.Topology3D.nonnested_reference_lower_label_images
+#print axioms PoincareMT.M25.Topology3D.nonnested_reference_lower_label_images
+#check @PoincareMT.M25.Topology3D.exists_saddle_two_band_label_matching
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_two_band_label_matching
+#check @PoincareMT.M25.Topology3D.exists_nonnested_reference_moved_end_geometry
+#print axioms PoincareMT.M25.Topology3D.exists_nonnested_reference_moved_end_geometry
+#check @PoincareMT.M25.Topology3D.exists_saddle_moved_lower_end_replacement
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_moved_lower_end_replacement
+#check @PoincareMT.M25.Topology3D.exists_nonnested_reference_moved_end_replacement
+#print axioms PoincareMT.M25.Topology3D.exists_nonnested_reference_moved_end_replacement
+#check @PoincareMT.M25.Topology3D.exists_saddle_three_cap_alignment
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_three_cap_alignment
+#check @PoincareMT.M25.Topology3D.exists_saddle_target_three_end_replacement
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_target_three_end_replacement
+#check @PoincareMT.M25.Topology3D.exists_saddle_nonnested_end_assembly
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_nonnested_end_assembly
+#check @PoincareMT.M25.Topology3D.exists_saddle_nonnested_bridge_witness
+#print axioms PoincareMT.M25.Topology3D.exists_saddle_nonnested_bridge_witness
+#check @PoincareMT.M25.Topology3D.image_univ_prod_singleton_zero
+#print axioms PoincareMT.M25.Topology3D.image_univ_prod_singleton_zero
+#check @PoincareMT.M25.Topology3D.exists_ball_of_bridge_witness
+#print axioms PoincareMT.M25.Topology3D.exists_ball_of_bridge_witness
+#check @PoincareMT.M25.Topology3D.exists_ball_of_saddle_piece_nonnested
+#print axioms PoincareMT.M25.Topology3D.exists_ball_of_saddle_piece_nonnested

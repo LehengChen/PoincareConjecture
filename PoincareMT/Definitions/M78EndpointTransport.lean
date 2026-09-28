@@ -1,0 +1,27 @@
+import PoincareMT.Definitions.M77Transport
+import PoincareMT.Statement
+
+/-!
+# M78 smooth-endpoint transport
+
+This is the admission-free adapter that composes the M76 homeomorphism with
+the M75 smooth endpoint diffeomorphism on the same transported model.
+-/
+
+set_option autoImplicit false
+
+open scoped Manifold ContDiff Bundle Topology
+
+universe u
+
+namespace PoincareMT
+
+structure M78EndpointConclusion {M : Type u} [TopologicalSpace M]
+    [T2Space M] [SecondCountableTopology M] [CompactSpace M]
+    [ChartedSpace (EuclideanSpace ℝ (Fin 3)) M]
+    (P : SmoothingBridgeInput (M := M))
+    (S : SmoothingBridgeConclusion P)
+    (T : M77TransportConclusion P S) where
+  identification : M ≃ₜ ThreeSphere
+
+end PoincareMT

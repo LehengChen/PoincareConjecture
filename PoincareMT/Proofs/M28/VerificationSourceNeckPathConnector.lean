@@ -1,0 +1,5 @@
+import PoincareMT.Proofs.M28.Sec10_3_Tube.SourceNeckPathConnector
+
+set_option autoImplicit false
+
+#print axioms PoincareMT.M28.exists_source_neck_path_connector_accuracy

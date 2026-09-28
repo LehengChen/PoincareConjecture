@@ -1,0 +1,45 @@
+import PoincareMT.Proofs.M35.Uniqueness.Heat.Exhaustion.RotationFamily
+import PoincareMT.Proofs.M35.Uniqueness.Heat.Exhaustion.SmallKillingDefect
+import PoincareMT.Proofs.M35.Uniqueness.Heat.Exhaustion.DefectHeatTestBound
+import PoincareMT.Proofs.M35.Uniqueness.Heat.Exhaustion.RegularRotationHeat
+
+#print axioms PoincareMT.M35.Uniqueness.Heat.vectorTestAdjoint_pair
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_vectorTestAdjoint_apply
+#print axioms PoincareMT.M35.Uniqueness.Heat.rawTestAdjoint_family_contDiffOn
+#print axioms PoincareMT.M35.Uniqueness.Heat.rawTestAdjointField_zero_off
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_adjoint_carrier_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.principalValueHeat_adjoint_integral
+#print axioms PoincareMT.M35.Uniqueness.Heat.vectorTestValue_pair_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_fixed_test_initial_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_rotation_heat_family
+#print axioms PoincareMT.M35.Uniqueness.Heat.RotationHeatFamily.uniform_initial_test_trace
+#print axioms PoincareMT.M35.Uniqueness.exists_raw_local_weighted_quadratic_heat_bound
+#print axioms PoincareMT.M35.Uniqueness.exists_uniform_local_vector_heat_gradient_bound
+#print axioms PoincareMT.M35.Uniqueness.exists_raw_local_distance_comparison
+#print axioms PoincareMT.M35.Uniqueness.exists_raw_local_small_subsolution
+#print axioms PoincareMT.M35.Uniqueness.exists_raw_local_lichnerowicz_small
+#print axioms PoincareMT.M35.Uniqueness.exists_raw_local_killing_defect_small
+#print axioms PoincareMT.M35.Uniqueness.killingDefectTensor_derivative
+#print axioms PoincareMT.M35.Uniqueness.vector_heat_pair_eq_defect_derivative_trace
+#print axioms PoincareMT.M35.Uniqueness.Heat.integral_mul_covariant_twoTensor_derivative
+#print axioms PoincareMT.M35.Uniqueness.Heat.vector_heat_component_eq_defect_coordinates
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_tensor_pair_test_slab_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_covariant_derivative_test_slab_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_inverseCoefficients_family_contDiffOn
+#print axioms PoincareMT.M35.Uniqueness.Heat.integral_vector_heat_component_eq_defect_tests
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_vector_heat_test_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.compact_family_integral_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.Heat.compact_test_time_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.Heat.integral_metricLieDerivative_eq_tests
+#print axioms PoincareMT.M35.Uniqueness.Heat.vector_heat_test_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.Heat.exists_raw_tested_stationarity_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.integral_lie_eq_zero_of_small_defect_tests
+#print axioms PoincareMT.M35.Uniqueness.Heat.metricLieDerivative_eq_zero_of_compact_tests
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_killing_of_compact_heat
+#print axioms PoincareMT.M35.Uniqueness.Heat.tensorNorm_sq_fixed_coefficients
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_tensorNorm_sq_continuousOn
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_killing_defect_normSq_continuousOn
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_vectorHeatJetEnergy_one_continuousOn
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_initial_heat_gradient_bound
+#print axioms PoincareMT.M35.Uniqueness.Heat.raw_initial_heat_killing
+#print axioms PoincareMT.M35.Uniqueness.Heat.compactKillingHeat_of_regular_rotation

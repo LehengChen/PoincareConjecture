@@ -1,0 +1,14 @@
+* text=auto
+*.md text eol=lf
+*.json text eol=lf
+*.lean text eol=lf
+*.sh text eol=lf
+*.tex text eol=lf
+*.bib text eol=lf
+*.pdf binary
+*.gz binary
+*.zip binary
+
+# Original source payloads must retain their exact archived bytes in Git.
+references/authoritative/** -text
+references/supporting/** -text

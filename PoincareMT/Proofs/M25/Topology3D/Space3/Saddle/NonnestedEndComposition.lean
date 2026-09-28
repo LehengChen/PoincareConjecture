@@ -1,0 +1,61 @@
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.PieceData
+import PoincareMT.Proofs.M25.Topology3D.Space3.Saddle.BallTransport
+
+/-!
+# Composition of the three nonnested end exchanges
+
+The lower and upper replacement producers expose complete image laws for
+their exchanged end sets and fixed retained sets.  This file records the
+finite-union calculation used to compose those laws.  It is the set-theoretic
+part of Hatcher, Notes on Basic 3-Manifold Topology, Lemma 1.2, pp. 2-3; the
+support hypotheses needed to obtain the image laws remain with the producers.
+-/
+
+set_option autoImplicit false
+
+open Set
+open scoped ContDiff Manifold
+
+namespace PoincareMT.M25.Topology3D
+
+local notation "D3" => Diffeomorph 𝓘(ℝ, E3) 𝓘(ℝ, E3) E3 E3 ∞
+
+/-- Compose two supported exchanges on a retained middle and two end sets.
+The first map sends `E₀` to `S₀` and fixes `R` and `E₁`; the second sends
+`E₁` to `S₁` and fixes `R` and `S₀`.  The resulting left-associated
+`Diffeomorph.trans` sends the complete source union to the complete target
+union. -/
+theorem image_trans_union_of_nonnested_exchanges
+    (g h : D3) (R E₀ E₁ S₀ S₁ : Set E3)
+    (hg₀ : g '' E₀ = S₀) (hgR : g '' R = R) (hg₁ : g '' E₁ = E₁)
+    (hh₀ : h '' S₀ = S₀) (hhR : h '' R = R) (hh₁ : h '' E₁ = S₁) :
+    (g.trans h) '' (R ∪ E₀ ∪ E₁) = R ∪ S₀ ∪ S₁ := by
+  calc
+    (g.trans h) '' (R ∪ E₀ ∪ E₁) = h '' (g '' (R ∪ E₀ ∪ E₁)) := by
+      rw [Diffeomorph.coe_trans, Set.image_comp]
+    _ = h '' (g '' R ∪ g '' E₀ ∪ g '' E₁) := by
+      simp only [image_union]
+    _ = h '' (R ∪ S₀ ∪ E₁) := by rw [hgR, hg₀, hg₁]
+    _ = h '' R ∪ h '' S₀ ∪ h '' E₁ := by
+      rw [image_union, image_union]
+    _ = R ∪ S₀ ∪ S₁ := by rw [hhR, hh₀, hh₁]
+
+/-- The inverse image calculation paired with
+`image_trans_union_of_nonnested_exchanges`. -/
+theorem image_trans_symm_union_of_nonnested_exchanges
+    (g h : D3) (R E₀ E₁ S₀ S₁ : Set E3)
+    (hg₀ : g.symm '' S₀ = E₀) (hgR : g.symm '' R = R)
+    (hg₁ : g.symm '' E₁ = E₁) (hh₀ : h.symm '' S₀ = S₀)
+    (hhR : h.symm '' R = R) (hh₁ : h.symm '' S₁ = E₁) :
+    (g.trans h).symm '' (R ∪ S₀ ∪ S₁) = R ∪ E₀ ∪ E₁ := by
+  calc
+    (g.trans h).symm '' (R ∪ S₀ ∪ S₁) = g.symm '' (h.symm '' (R ∪ S₀ ∪ S₁)) := by
+      rw [Diffeomorph.symm_trans', Diffeomorph.coe_trans, Set.image_comp]
+    _ = g.symm '' (h.symm '' R ∪ h.symm '' S₀ ∪ h.symm '' S₁) := by
+      simp only [image_union]
+    _ = g.symm '' (R ∪ S₀ ∪ E₁) := by rw [hhR, hh₀, hh₁]
+    _ = g.symm '' R ∪ g.symm '' S₀ ∪ g.symm '' E₁ := by
+      rw [image_union, image_union]
+    _ = R ∪ E₀ ∪ E₁ := by rw [hgR, hg₀, hg₁]
+
+end PoincareMT.M25.Topology3D

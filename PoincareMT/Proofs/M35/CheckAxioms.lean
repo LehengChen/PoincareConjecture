@@ -1,0 +1,730 @@
+import PoincareMT.Proofs.M35.RawFlow.Completeness
+import PoincareMT.Proofs.M35.Sec12_4_Uniqueness.LifetimeEquality
+import PoincareMT.Proofs.M35.Prop12_31_ScalarRate
+import PoincareMT.Proofs.M35.Prop12_31.CompactCore
+import PoincareMT.Proofs.M35.Prop12_31.ScalarFloor
+import PoincareMT.Proofs.M35.Thm12_28.BlowupSequence
+import PoincareMT.Proofs.M35.Thm12_28.NoncollapsedSlabs
+import PoincareMT.Proofs.M35.Thm12_28.Nonnegative
+import PoincareMT.Proofs.M35.Thm12_28.CompactBalls
+import PoincareMT.Proofs.M35.Thm12_28.EvolvingNeckCurvature
+import PoincareMT.Proofs.M35.Thm12_28.CanonicalScalarEstimates
+import PoincareMT.Proofs.M35.Thm12_28.SliceScalarEstimates
+import PoincareMT.Proofs.M35.Thm12_28.GeneralizedNeck
+import PoincareMT.Proofs.M35.Thm12_28.LimitNoncompact
+import PoincareMT.Proofs.M35.Thm12_28.FirstFailure
+import PoincareMT.Proofs.M35.Thm12_28.LimitAlternatives
+import PoincareMT.Proofs.M35.Thm12_28.AncientExtraction
+import PoincareMT.Proofs.M35.Thm12_28.CapCompactness
+import PoincareMT.Proofs.M35.Thm12_28.FixedMetricJets
+import PoincareMT.Proofs.M35.Thm12_28.SpacetimeSpatialConvergence
+import PoincareMT.Proofs.M35.Thm12_28.NeckRestriction
+import PoincareMT.Proofs.M35.Thm12_28.NeckJetTransfer
+import PoincareMT.Proofs.M35.Thm12_28.SphereFrameCompactness
+import PoincareMT.Proofs.M35.Thm12_28.UniformNeckJets
+import PoincareMT.Proofs.M35.Thm12_28.NeckPullbackSmoothness
+import PoincareMT.Proofs.M35.Thm12_28.LimitStrongNeckTransfer
+import PoincareMT.Proofs.M35.Mathlib.FiniteJetComposition
+import PoincareMT.Proofs.M35.Thm12_28.NeckCompactness
+import PoincareMT.Proofs.M35.Mathlib.SpatialJetsWithin
+import PoincareMT.Proofs.M35.Thm12_28.TransportedCapDiameter
+import PoincareMT.Proofs.M35.Thm12_28.ScalarMetricJets
+import PoincareMT.Proofs.M35.Thm12_28.TransportedCapScalar
+import PoincareMT.Proofs.M35.Thm12_28.TransportedCapBall
+import PoincareMT.Proofs.M35.Thm12_28.TransportedCapVolume
+import PoincareMT.Proofs.M35.Thm12_28.TransportedCapSize
+import PoincareMT.Proofs.M35.Thm12_28.ScalarOperatorPullback
+import PoincareMT.Proofs.M35.CapGeometry.SelectedCoreRadius
+import PoincareMT.Proofs.M35.CapGeometry.CarrierTopology
+import PoincareMT.Proofs.M35.Uniqueness.CoordinateRotations
+import PoincareMT.Proofs.M35.Uniqueness.KillingDefectEvolution
+import PoincareMT.Proofs.M35.TerminalBlowup.MetricNondegeneration
+import PoincareMT.Proofs.M35.Thm12_28.TransportedCapOperators
+import PoincareMT.Proofs.M35.CapGeometry.CompactCoreRadii
+import PoincareMT.Proofs.M35.CapGeometry.BoundaryDefiningFunction
+import PoincareMT.Proofs.M35.CapGeometry.CoreBallVolume
+import PoincareMT.Proofs.M35.CapGeometry.NeckBufferedBall
+import PoincareMT.Proofs.M35.CapGeometry.NeckScalarFloor
+import PoincareMT.Proofs.M35.Uniqueness.KillingStationary
+import PoincareMT.Proofs.M35.Uniqueness.RadialArclength
+import PoincareMT.Proofs.M35.Uniqueness.RadialMetricForm
+import PoincareMT.Proofs.M35.TerminalBlowup.TipPropagation
+import PoincareMT.Proofs.M35.TerminalBlowup.Pointwise
+import PoincareMT.Proofs.M35.CapGeometry.SelectedCertificate
+import PoincareMT.Proofs.M35.Uniqueness.BoundedVectorHeat
+import PoincareMT.Proofs.M35.Uniqueness.KillingDerivativeBianchi
+import PoincareMT.Proofs.M35.Uniqueness.KillingCovectorHeat
+import PoincareMT.Proofs.M35.Thm12_28.NeckEndpointContinuity
+import PoincareMT.Proofs.M35.Thm12_28.NeckStrictMargin
+import PoincareMT.Proofs.M35.Thm12_28.PointIsometryJets
+import PoincareMT.Proofs.M35.Thm12_28.FullNeckMetricJets
+import PoincareMT.Proofs.M35.RadialGauge.GaussianIntegration
+import PoincareMT.Proofs.M35.RadialGauge.HeatDerivative
+import PoincareMT.Proofs.M35.RadialGauge.PicardIteration
+import PoincareMT.Proofs.M35.RadialGauge.RadiusEnd
+import PoincareMT.Proofs.M35.Uniqueness.KillingPreservation
+import PoincareMT.Proofs.M35.CapGeometry.FullStaticStability
+import PoincareMT.Proofs.M35.CapGeometry.UniformFullNeckJets
+import PoincareMT.Proofs.M35.CapGeometry.IndependentScalarRate
+import PoincareMT.Proofs.M35.CapGeometry.FarTipSlope
+import PoincareMT.Proofs.M35.RadialGauge.MildExistence
+import PoincareMT.Proofs.M35.RadialGauge.DuhamelEquation
+import PoincareMT.Proofs.M35.RadialGauge.JointContinuity
+import PoincareMT.Proofs.M35.RadialGauge.PicardContinuity
+import PoincareMT.Proofs.M35.RadialGauge.EuclideanGauge
+import PoincareMT.Proofs.M35.RadialGauge.PicardC2Limit
+import PoincareMT.Proofs.M35.RadialGauge.HeatTimeLipschitz
+import PoincareMT.Proofs.M35.RadialGauge.PicardHessian
+import PoincareMT.Proofs.M35.Uniqueness.VectorHeatGradientBound
+import PoincareMT.Proofs.M35.Uniqueness.VectorHeatBernstein
+import PoincareMT.Proofs.M35.Uniqueness.RotationIntegration
+import PoincareMT.Proofs.M35.Uniqueness.InitialRotationBounds
+
+/-! Kernel dependencies for Lemma 12.6, Theorem 12.5's lifetime step,
+the Chapter 11 realization used in Theorem 12.28, and the corrected
+real-variable argument in Proposition 12.31. -/
+
+set_option autoImplicit false
+-- This audit module intentionally prints the kernel axioms of every owned helper.
+set_option linter.hashCommand false
+
+#print axioms PoincareMT.PartialStandardCapFlow.exists_metric_comparison
+#print axioms PoincareMT.RiemannianMetric.edist_le_mul_edist_of_tangentNorm_le
+#print axioms PoincareMT.RiemannianMetric.metricComplete_of_tangentNorm_le
+#print axioms PoincareMT.PartialStandardCapFlow.complete
+#print axioms PoincareMT.RiemannianMetric.toEMetricSpace
+#print axioms PoincareMT.RiemannianMetric.toEMetricSpace_topology
+#print axioms PoincareMT.RiemannianMetric.toEMetricSpace_edist
+#print axioms PoincareMT.RiemannianMetric.metricComplete_iff_toEMetricSpace
+#print axioms PoincareMT.PartialStandardCapFlow.extensionOfMetricAgreement
+#print axioms PoincareMT.MaximalStandardCapFlow.partial_lifetime_le_of_metric_agreement
+#print axioms PoincareMT.MaximalStandardCapFlow.lifetime_eq_of_metric_agreement
+#print axioms inv_mul_time_sub_le_of_tendsto_atTop
+#print axioms EMetricSpace.completeSpace_of_topology_eq_edist_le
+#print axioms exists_last_threshold_crossing
+#print axioms inv_mul_time_sub_le_of_eventual_quadratic_bound
+#print axioms exists_uniform_final_reciprocal_bound
+#print axioms exists_uniform_reciprocal_bound_of_early_floor
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.scalar_lower_rate_of_blowup_and_guarded_bound
+#print axioms PoincareMT.LeviCivitaData.scalarCurvature_pos_of_positive_sectional
+#print axioms PoincareMT.RepairedStandardCapExistenceData.scalar_pos
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_scalar_floor_on_compact
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_scalar_floor_of_exterior_bound
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_initial_second_curvature_bound
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.exists_initial_scalar_derivative_lower_bound
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_initial_scalar_floor
+#print axioms PoincareMT.LeviCivitaData.nonnegativeCurvatureOperator_of_nonnegative_sectional_three
+#print axioms PoincareMT.LeviCivitaData.curvatureOperatorBound_of_curvatureTensorNorm_le
+#print axioms PoincareMT.RepairedStandardCapExistenceData.time_mul_scalar_le
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_scalar_floor
+
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceDomain
+#print axioms PoincareMT.M35.OrdinaryRealization.slice
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceDiffeomorph
+#print axioms PoincareMT.M35.OrdinaryRealization.slice_val_localDiffeomorph
+#print axioms PoincareMT.M35.OrdinaryRealization.metric
+#print axioms PoincareMT.M35.OrdinaryRealization.connection
+#print axioms PoincareMT.M35.OrdinaryRealization.slice_nonempty_iff
+#print axioms PoincareMT.M35.OrdinaryRealization.metric_pullback
+#print axioms PoincareMT.M35.OrdinaryRealization.spacetimeEquiv
+#print axioms PoincareMT.M35.OrdinaryRealization.spacetimeTopology
+#print axioms PoincareMT.M35.OrdinaryRealization.spacetimeHomeomorph
+#print axioms PoincareMT.M35.OrdinaryRealization.time_continuous
+#print axioms PoincareMT.M35.OrdinaryRealization.slice_embedding
+#print axioms PoincareMT.M35.OrdinaryRealization.capCarrier
+#print axioms PoincareMT.M35.OrdinaryRealization.box
+#print axioms PoincareMT.M35.OrdinaryRealization.generalizedFlow
+#print axioms PoincareMT.M35.OrdinaryRealization.generalizedFlow_interval
+#print axioms PoincareMT.M35.OrdinaryRealization.generalizedFlow_box_flow
+#print axioms PoincareMT.M35.OrdinaryRealization.slice_homothety
+#print axioms PoincareMT.M35.OrdinaryRealization.slice_calculus
+#print axioms PoincareMT.M35.OrdinaryRealization.scalar_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.curvatureNorm_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.complete_iff
+#print axioms PoincareMT.M35.OrdinaryRealization.edist_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.volume_image
+#print axioms PoincareMT.M35.OrdinaryRealization.clock_embedding
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_pullbackInner
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceCylinder
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceCylinder_pointMap
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceCylinder_zero_identity
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceCylinder_curvatureNorm
+#print axioms add_div_mem_Ico_of_mem_Icc
+#print axioms PoincareMT.M35.OrdinaryRealization.maximalWorldline
+#print axioms PoincareMT.M35.OrdinaryRealization.maximalWorldlineIco
+#print axioms PoincareMT.PartialStandardCapFlow.tendsto_time_of_scalar_diverges
+#print axioms PoincareMT.PartialStandardCapFlow.tendsto_scalar_mul_time_of_diverges
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_scale
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_scaled_time
+#print axioms PoincareMT.M35.OrdinaryRealization.backwardDuration_le
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_worldlines
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_spatial_locallyConstant
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_spatial_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_curvature_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.ball_image
+#print axioms PoincareMT.M35.OrdinaryRealization.volume_ball
+#print axioms PoincareMT.M35.OrdinaryRealization.noncollapsed
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_noncollapsed_at_zero
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_noncollapsed_slabs
+#print axioms PoincareMT.LeviCivitaData.negativeCurvaturePart_eq_zero_of_nonnegative
+#print axioms PoincareMT.M35.OrdinaryRealization.negativeCurvaturePart_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.generalized_nonnegative
+#print axioms PoincareMT.M35.OrdinaryRealization.isCompact_closure_ball
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_balls_compact
+
+#print axioms PoincareMT.M35.sphere_chart_center
+#print axioms PoincareMT.M35.sphere_chart_target
+#print axioms PoincareMT.M35.sphere_chart_pullback_inner
+#print axioms PoincareMT.M35.roundCylinderGram_center
+#print axioms PoincareMT.M35.roundCylinderGram_inv_center
+#print axioms PoincareMT.M35.roundCylinderTensorNormSquared_center
+#print axioms PoincareMT.M35.roundCylinderInverseWeight_pos
+#print axioms PoincareMT.M35.roundCylinderTensorNormSquared_nonneg
+#print axioms PoincareMT.M35.roundCylinder_component_sq_le
+#print axioms PoincareMT.M35.roundCylinder_derivative_norm_le_jet
+#print axioms PoincareMT.RoundCylinderClose.component_sq_lt
+#print axioms PoincareMT.M35.fderiv_stereoInvFunAux_apply
+#print axioms PoincareMT.M35.inner_fderiv_stereoInvFunAux
+#print axioms PoincareMT.M35.hasFDerivAt_stereographicMetricFactor
+#print axioms PoincareMT.M35.sphere_chart_pullback_inner_at
+#print axioms PoincareMT.M35.roundCylinderGram_eq
+#print axioms PoincareMT.M35.roundCylinderGram_apply
+#print axioms PoincareMT.M35.roundCylinderGram_inv_eq
+#print axioms PoincareMT.M35.contDiff_roundCylinderGram
+#print axioms PoincareMT.M35.fderiv_roundCylinderGram_apply
+#print axioms PoincareMT.M35.hasFDerivAt_roundCylinderGram_center
+#print axioms PoincareMT.M35.roundCylinderChristoffel_center
+#print axioms PoincareMT.M35.roundCylinderTensorDerivative_center
+#print axioms PoincareMT.M35.roundCylinderIteratedDerivative_one_center
+#print axioms PoincareMT.M35.roundCylinderChristoffel_eq
+#print axioms PoincareMT.M35.fderiv_roundCylinderChristoffel_center
+#print axioms PoincareMT.M35.contDiff_roundCylinderChristoffel
+#print axioms PoincareMT.M35.fderiv_roundCylinderTensorDerivative_center
+#print axioms PoincareMT.M35.roundCylinderIteratedDerivative_two_center
+#print axioms PoincareMT.RoundCylinderClose.contDiffAt_coefficient
+#print axioms PoincareMT.RoundCylinderClose.first_component_sq_lt
+#print axioms PoincareMT.M35.roundCylinderInverseWeight_lower
+#print axioms PoincareMT.M35.abs_fderiv_roundCylinderChristoffel_center_le
+#print axioms PoincareMT.RoundCylinderClose.component_abs_lt
+#print axioms PoincareMT.RoundCylinderClose.first_component_abs_lt
+#print axioms PoincareMT.RoundCylinderClose.second_error_component_abs_lt
+#print axioms PoincareMT.M35.cylinderCoordinateEquiv
+#print axioms PoincareMT.M35.cylinderCoordinateEquiv_fst
+#print axioms PoincareMT.M35.cylinderCoordinateEquiv_snd
+#print axioms PoincareMT.M35.cylinderCoordinateEquiv_basis
+#print axioms PoincareMT.M35.cylinderEuclideanCoefficients
+#print axioms PoincareMT.M35.cylinderEuclideanCoefficients_apply
+#print axioms PoincareMT.M35.cylinderEuclideanMetric
+#print axioms PoincareMT.M35.cylinderEuclideanConnection
+#print axioms PoincareMT.M35.cylinderEuclideanMetric_basis
+#print axioms PoincareMT.M35.cylinderEuclideanMetric_inner_basis
+#print axioms PoincareMT.M35.fderiv_cylinderEuclideanMetric_basis
+#print axioms PoincareMT.M35.cylinder_connection_component
+#print axioms PoincareMT.M35.fderiv_cylinder_connection_component
+#print axioms PoincareMT.M35.cylinder_connection_center
+#print axioms PoincareMT.M35.cylinder_curvature_component_center
+#print axioms PoincareMT.M35.cylinder_curvatureTensor_center
+#print axioms PoincareMT.M35.cylinder_ricci_center
+#print axioms PoincareMT.M35.cylinder_scalarCurvature_center
+#print axioms PoincareMT.M35.cylinder_curvatureTensorNorm_center
+#print axioms PoincareMT.M35.cylinderChart
+#print axioms PoincareMT.M35.cylinderChart_contMDiff
+#print axioms PoincareMT.M35.mfderiv_cylinderChart
+#print axioms PoincareMT.M35.cylinderChart_mfderiv_invertible
+#print axioms PoincareMT.StandardCylinderPatch.coordinate_localDiffeomorph
+#print axioms PoincareMT.StandardCylinderPatch.euclideanChart_contMDiffAt
+#print axioms PoincareMT.StandardCylinderPatch.euclideanChart_mfderiv_invertible
+#print axioms PoincareMT.StandardCylinderPatch.euclideanChart_coefficient
+#print axioms PoincareMT.StandardCylinderPatch.exists_euclidean_metric_realization
+#print axioms PoincareMT.StandardCylinderPatch.exists_euclidean_curvature_realization
+#print axioms PoincareMT.M35.iteratedFDeriv_cylinderCoordinateEquiv
+#print axioms PoincareMT.RoundCylinderClose.iterated_error_component_abs_lt
+#print axioms PoincareMT.RoundCylinderClose.euclidean_metric_error_component_abs_lt
+#print axioms PoincareMT.StandardCylinderPatch.euclidean_realization_coefficient_germ
+#print axioms PoincareMT.M35.cylinder_curvatureTensorNorm_tendsto
+#print axioms PoincareMT.M35.exists_cylinder_curvature_bound
+#print axioms PoincareMT.M35.exists_neck_center_curvature_bound
+#print axioms PoincareMT.M35.exists_scaled_cylinder_curvature_bound
+#print axioms PoincareMT.M35.exists_static_neck_curvature_bound
+#print axioms PoincareMT.M35.cylinderEuclideanCoefficients_time_affine
+#print axioms PoincareMT.M35.continuous_cylinder_metric_jet
+#print axioms PoincareMT.RoundCylinderClose.euclidean_metric_error_component_abs_lt_shift
+#print axioms PoincareMT.M35.cylinder_curvatureTensorNorm_tendsto_of_time_tendsto
+#print axioms PoincareMT.StandardCylinderPatch.exists_axial_curvature_realization
+#print axioms PoincareMT.M35.exists_backward_cylinder_curvature_bound
+#print axioms PoincareMT.M35.exists_backward_neck_carrier_curvature_bound
+#print axioms PoincareMT.M35.exists_spacetime_neck_curvature_bound
+#print axioms PoincareMT.M35.exists_evolving_neck_curvature_bound
+#print axioms PoincareMT.M35.cylinderEuclideanCoefficients_lower
+#print axioms PoincareMT.StandardCylinderPatch.euclidean_pullback_lower
+#print axioms PoincareMT.StandardCylinderPatch.axial_contMDiffAt
+#print axioms PoincareMT.StandardCylinderPatch.axial_mfderiv_chart
+#print axioms PoincareMT.StandardCylinderPatch.axial_derivative_bound
+#print axioms PoincareMT.StandardCylinderPatch.closed_axial_slab_subset_carrier
+#print axioms PoincareMT.StandardCylinderPatch.compact_axial_slab
+#print axioms PoincareMT.StandardCylinderPatch.open_axial_slab
+#print axioms PoincareMT.StandardCylinderPatch.axial_abs_eq_at_slab_exit
+#print axioms PoincareMT.StandardCylinderPatch.exists_first_axial_exit
+#print axioms PoincareMT.StandardCylinderPatch.axial_edist_le_pathELength
+#print axioms PoincareMT.StandardCylinderPatch.center_ball_subset_carrier
+#print axioms PoincareMT.M35.exists_unit_neck_derivative_bounds
+#print axioms PoincareMT.M35.abs_scalar_derivative_le_curvature_derivative
+#print axioms PoincareMT.M35.ricciNormSq_le_curvature_derivative_zero
+#print axioms PoincareMT.M35.exists_unit_neck_scalar_bounds
+#print axioms PoincareMT.OrdinaryParabolicRescaling.scalar_directional_eq
+#print axioms PoincareMT.OrdinaryParabolicRescaling.scalar_evolution_eq
+#print axioms PoincareMT.M35.exists_evolving_neck_scalar_bounds
+#print axioms PoincareMT.LeviCivitaData.abs_scalar_directional_le_scalarGradientNorm
+#print axioms PoincareMT.StandardCapNeighborhood.scalar_analytic_bounds
+#print axioms PoincareMT.PartialStandardCapFlow.exists_unit_backward_duration_threshold
+#print axioms PoincareMT.M35.canonical_scalar_analytic_controls
+#print axioms PoincareMT.M35.exists_guarded_scalar_bound_of_canonical
+#print axioms PoincareMT.M35.OrdinaryRealization.scalar_directional_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.scalar_directional_bound
+#print axioms PoincareMT.M35.OrdinaryRealization.scalar_time_bound
+#print axioms PoincareMT.StandardCylinderPatch.coordinateHomeomorph
+#print axioms Diffeomorph.mfderiv_comp
+#print axioms Diffeomorph.mfderiv_cancel_left
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceCylinder_pullbackInner
+#print axioms PoincareMT.M35.OrdinaryRealization.sliceCylinder_roundCylinderPullback
+#print axioms PoincareMT.StandardEvolvingNeck.toGeneralizedStrongNeck
+#print axioms PoincareMT.StandardEvolvingNeck.generalized_canonical_control
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_source_noncompact
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_limit_noncompact
+#print axioms PoincareMT.M35.exists_bad_point_with_earlier_control
+#print axioms PoincareMT.M35.exists_first_failure_sequence
+#print axioms PoincareMT.M35.exists_singular_derivative_of_even
+#print axioms PoincareMT.M35.spherePolarMap
+#print axioms PoincareMT.M35.spherePolarMap_sphere
+#print axioms PoincareMT.M35.spherePolarMap_neg
+#print axioms PoincareMT.M35.spherePolarMap_contMDiffAt
+#print axioms PoincareMT.M35.spherePolarMap_mfderiv_injective
+#print axioms PoincareMT.GeneralizedFlowCylinder.mfderiv_injective
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_excludes_antipodal_product
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_limit_no_antipodal_product
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_limit_not_projective
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_limit_cap_or_neck_constants
+#print axioms PoincareMT.M35.exists_short_neck_derivative_bounds
+#print axioms PoincareMT.M35.exists_short_neck_scalar_bounds
+#print axioms PoincareMT.OrdinaryParabolicRescaling.scalar_evolution_eq_of_interval
+#print axioms PoincareMT.M35.exists_half_neck_scalar_bounds
+#print axioms PoincareMT.M35.cylinder_jet_congr
+#print axioms PoincareMT.M35.cylinder_smooth_congr
+#print axioms PoincareMT.M35.cylinder_family_congr
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_pullbackInner_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.standardPatchOfGeneralizedNeck
+#print axioms PoincareMT.M35.OrdinaryRealization.standardNeckOfGeneralizedNeck
+#print axioms PoincareMT.M35.capCertificate_scalar_analytic_bounds
+#print axioms PoincareMT.M35.OrdinaryRealization.ricciNormSq_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.scalar_evolution_eq
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_strong_canonical_scalar_bounds
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_strong_first_failure_sequence
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_ancient_extraction_threshold
+#print axioms PoincareMT.M35.edist_le_intrinsicEDist
+#print axioms PoincareMT.CapCertificate.isCompact_closure
+#print axioms PoincareMT.CapCertificate.scalar_ratio_on_closure
+#print axioms PoincareMT.CapCertificate.exists_positive_scalar_bounds_on_closure
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinderSpatialCoordinates
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_pullbackInner_eq_fixed
+#print axioms PoincareMT.EpsilonNeck.coordinatePartialDiffeomorph
+#print axioms PoincareMT.EpsilonNeck.transportedStandardPatch
+#print axioms PoincareMT.M35.OrdinaryRealization.fixedCylinderMetricCoefficient
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_coefficient_eq_fixed
+#print axioms PoincareMT.M35.OrdinaryRealization.cylinder_coefficient_jet_eq_fixed
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_fixed_metric_CInfinity
+#print axioms iteratedFDeriv_zero_slice_of_contDiffOn
+#print axioms norm_spatial_jet_sub_le_spacetime_jet_sub
+#print axioms PoincareMT.EpsilonNeck.axial_tangentNorm_le
+#print axioms PoincareMT.EpsilonNeck.axial_dist_le
+#print axioms PoincareMT.EpsilonNeck.isCompact_central_sphere_m35
+#print axioms PoincareMT.EpsilonNeck.isCompact_closure
+#print axioms PoincareMT.M35.metricFamily_contDiffWithinAt_spacetime_pullbackCoefficients
+#print axioms PoincareMT.M35.metricFamily_contDiffOn_rescaled_pullbackCoefficients
+#print axioms PoincareMT.M35.metricFamily_contDiffOn_spacetime_chartCoefficient
+#print axioms PoincareMT.M35.OrdinaryRealization.fixedCylinderMetricCoefficient_eq_pullback
+#print axioms PoincareMT.M35.OrdinaryRealization.fixedCylinderMetricCoefficient_contDiffOn
+#print axioms PoincareMT.M35.OrdinaryRealization.fixedCylinderMetricCoefficient_spatialJet
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_spatial_CInfinity
+#print axioms PoincareMT.M35.abs_bilinear_le_of_components
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_metric_comparison
+#print axioms PoincareMT.RiemannianMetric.pullbackCoefficients_chart_cancel
+#print axioms PoincareMT.RiemannianMetric.chartCoefficients_cancel
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_compact_metric_comparison
+
+#print axioms PoincareMT.M35.tangentNorm_pullback_le_of_quadratic_le
+#print axioms PoincareMT.M35.pathELength_comp_le_of_tangentNorm_le
+#print axioms PoincareMT.M35.intrinsicEDist_image_le
+#print axioms PoincareMT.M35.intrinsicDiameter_image_le
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_diameter_bound
+#print axioms PoincareMT.M35.scalarCurvature_eq_inverse_gram
+#print axioms PoincareMT.M35.scalarCurvature_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalarCurvature_eq_pullback_euclidean
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_tendsto
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_tendsto_chart
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_uniform_chart
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_uniform_compact
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_scalar_control
+#print axioms PoincareMT.M35.ball_subset_image_of_tangentNorm_lower
+#print axioms PoincareMT.M35.inverse_tangentNorm_bound
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_ball_retention
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_core_ball_retention
+#print axioms PoincareMT.M35.calibratedVolume_image_le_of_tangentNorm_le
+#print axioms PoincareMT.M35.calibratedVolume_le_image_of_tangentNorm_lower
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_volume_comparison
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_volume_bound
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_scalar_sup_tendsto
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_size_bounds
+#print axioms iteratedFDeriv_time_slice_of_contDiffOn
+#print axioms PoincareMT.M35.OrdinaryRealization.fixedCylinderMetricCoefficient_spatialJetAt
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_spacetime_spatial_CInfinity
+#print axioms PoincareMT.StandardCylinderPatch.restrict
+#print axioms PoincareMT.M35.roundCylinderJetErrorSquared_mono_order
+#print axioms PoincareMT.RoundCylinderFamilyClose.restrict_bound
+#print axioms PoincareMT.StandardSpacetimeCylinderClose.restrict
+#print axioms PoincareMT.M35.sphereChartFrame
+#print axioms PoincareMT.M35.sphereChartFrame_norm
+#print axioms PoincareMT.M35.sphereChartFrame_orthogonal
+#print axioms PoincareMT.M35.sphere_chart_inverse_eq_frame
+#print axioms PoincareMT.M35.sphere_chart_inverse_subsequence
+#print axioms PoincareMT.M35.tendsto_iteratedFDeriv_comp_of_jets
+#print axioms continuousOn_spatial_jet_of_contDiffOn
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_spatial_jet_tendsto_moving
+#print axioms PoincareMT.M35.tendsto_iteratedFDeriv_prodMk_of_jets
+#print axioms PoincareMT.M35.tendsto_iteratedFDeriv_mul_of_jets
+#print axioms PoincareMT.M35.tendsto_iteratedFDeriv_fderiv_apply_of_jet
+#print axioms PoincareMT.M35.contDiffAt_roundCylinderIteratedDerivative
+#print axioms PoincareMT.M35.roundCylinderIteratedDerivative_difference_jets_tendsto_zero
+#print axioms PoincareMT.M35.roundCylinderJetDifferenceSquared
+#print axioms PoincareMT.M35.roundCylinderJetDifferenceSquared_nonneg
+#print axioms PoincareMT.M35.roundCylinderTensorNormSquared_le_twice
+#print axioms PoincareMT.M35.roundCylinderJetErrorSquared_le_twice
+#print axioms PoincareMT.M35.roundCylinderJetDifferenceSquared_tendsto_zero
+#print axioms PoincareMT.M35.cylinder_jet_difference_uniform
+#print axioms PoincareMT.RoundCylinderFamilyClose.perturb_of_jet_difference_le
+#print axioms PoincareMT.M35.cylinder_family_close_eventually_of_coefficient_jets
+#print axioms PoincareMT.M35.tendsto_iteratedFDeriv_clm_comp_of_jet
+#print axioms PoincareMT.M35.preferredCylinderChart_contMDiff
+#print axioms PoincareMT.M35.sphere_cylinder_inverse_jet_tendsto
+#print axioms PoincareMT.M35.sphere_cylinder_radial_extension_contDiffAt
+#print axioms PoincareMT.M35.sphere_cylinder_composed_jets_tendsto
+#print axioms
+  PoincareMT.M35.OrdinaryRealization.fixedCylinderMetricCoefficient_contDiffAt_spatial
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_spatial_error_jets
+#print axioms PoincareMT.M35.metric_pullback_cylinder_chart_sum
+#print axioms PoincareMT.M35.roundCylinderPullback_coefficient_eq_chart_sum
+#print axioms PoincareMT.M35.cylinder_pullback_jet_difference_tendsto_zero
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_neck_coefficient_error_jets
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_neck_coefficient_jets_uniform
+#print axioms PoincareMT.M35.roundCylinderPullback_coefficient_eq_euclidean
+#print axioms PoincareMT.M35.roundCylinderPullback_coefficient_contDiffAt
+#print axioms PoincareMT.M35.roundCylinderPullback_scaled_smoothOn
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_neck_family_close
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_standard_evolving_neck
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_limit_neck_canonical
+#print axioms PoincareMT.M35.tendsto_iteratedFDeriv_smooth_comp_of_jets
+#print axioms PoincareMT.M35.metric_jet_tendsto_of_scalar_jets
+#print axioms PoincareMT.M35.euclideanConnection_jets_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.euclideanConnection_field_contDiffAt
+#print axioms PoincareMT.M35.euclideanConnection_field_jets_tendsto
+#print axioms PoincareMT.M35.curvature_contDiffAt_euclidean
+#print axioms PoincareMT.M35.curvature_jets_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.curvatureTensor_contDiffAt_euclidean
+#print axioms PoincareMT.M35.curvatureTensor_jets_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.inverseGram_contDiffAt
+#print axioms PoincareMT.M35.inverseGram_jets_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.ricci_contDiffAt_euclidean
+#print axioms PoincareMT.M35.ricci_jets_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalarCurvature_contDiffAt_euclidean
+#print axioms PoincareMT.M35.scalarCurvature_jets_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalarGradientNorm_eq_gradient_norm
+#print axioms PoincareMT.M35.scalar_fderiv_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalarGradientNorm_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalar_second_fderiv_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalar_laplacian_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.ricciNormSq_eq_inverse_gram
+#print axioms PoincareMT.M35.ricciNormSq_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalar_evolution_tendsto_of_metric_jets
+#print axioms PoincareMT.M35.scalarGradientNorm_eq_pullback_of_scalar_germ
+#print axioms PoincareMT.M35.ricciNormSq_eq_pullback_euclidean
+#print axioms PoincareMT.M35.scalar_evolution_eq_pullback_of_scalar_germ
+#print axioms PoincareMT.M35.riemannian_closure_ball
+#print axioms PoincareMT.M35.continuousOn_scalar_closedBall_sup
+#print axioms PoincareMT.M35.scalar_ball_sup_eq_closedBall
+#print axioms PoincareMT.M35.exists_scalar_curvature_radius_le
+#print axioms PoincareMT.M35.exists_larger_ball_closure_subset
+#print axioms PoincareMT.M35.exists_scalar_witness_in_curvature_ball
+#print axioms PoincareMT.CapCertificate.exists_buffered_core_scalar_witness
+#print axioms PoincareMT.M35.image_ball_subset_of_tangentNorm_upper
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_core_curvature_ball_at
+#print axioms PoincareMT.CapCertificate.transported_core_topology
+#print axioms PoincareMT.CapModelEquivalence.transported
+#print axioms PoincareMT.M35.Uniqueness.metricLieDerivative_linear
+#print axioms PoincareMT.M35.Uniqueness.standardRotation_mfderiv
+#print axioms PoincareMT.M35.Uniqueness.initial_rotation_path_killing
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation_zero
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotationGenerator
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.initial_coordinateRotationGenerator_killing
+#print axioms PoincareMT.M35.Uniqueness.linear_killing_defect_hasDerivAt
+#print axioms PoincareMT.LeviCivitaData.ricci_le_scalar_mul_inner_of_nonnegative_sectional
+#print axioms PoincareMT.RicciFlow.metric_lower_at_of_nonnegative_sectional_and_scalar_bound
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_final_scalar_bound_of_not_tendsto
+#print axioms PoincareMT.RepairedStandardCapExistenceData.exists_metric_lower_of_not_scalar_tendsto
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.scalar_tendsto_of_tangent_metric_tendsto_zero
+#print axioms PoincareMT.M35.scale_inverse_metric
+#print axioms PoincareMT.M35.scale_gradient
+#print axioms PoincareMT.M35.scale_scalarGradientNorm
+#print axioms PoincareMT.M35.scale_laplacian
+#print axioms PoincareMT.M35.scale_scalar_laplacian
+#print axioms PoincareMT.M35.homothety_ricciNormSq
+#print axioms PoincareMT.M35.scale_ricciNormSq
+#print axioms PoincareMT.M35.scale_scalar_evolution
+#print axioms PoincareMT.M35.exists_local_scalar_operator_realization
+#print axioms PoincareMT.M35.exists_scaled_scalar_operator_realization
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_cylinder_scalar_operator_realization
+#print axioms
+  PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_operators_tendsto_chart
+#print axioms PoincareMT.M35.OrdinaryRealization.uniform_of_moving_point_limits
+#print axioms PoincareMT.M35.continuous_scalarGradientNorm
+#print axioms PoincareMT.M35.continuous_scalar_evolution_slice
+#print axioms
+  PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_operators_uniform_chart
+#print axioms
+  PoincareMT.M35.OrdinaryRealization.blowupSequence_terminal_scalar_operators_uniform_compact
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_scalar_operator_bounds
+#print axioms PoincareMT.CapCertificate.exists_local_core_scalar_witness
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_scalar_witness_curvature_balls
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_core_curvature_balls_compact
+#print axioms PoincareMT.CapCertificate.transported_boundary_local_defining_function
+#print axioms PoincareMT.LeviCivitaData.curvatureTensorNorm_le_scalar_of_nonnegative_sectional_three
+#print axioms PoincareMT.RepairedStandardCapExistenceData.scalar_curvature_ball_volume_lower
+#print axioms PoincareMT.StandardCylinderPatch.center_ball_subset_carrier_of_axial_cutoff
+#print axioms PoincareMT.StandardCylinderPatch.central_sphere_ball_subset_carrier_of_axial_cutoff
+#print axioms PoincareMT.M35.exists_cylinder_curvature_lower_bound
+#print axioms PoincareMT.M35.exists_scaled_nonnegative_cylinder_scalar_floor
+#print axioms PoincareMT.M35.Uniqueness.fieldHessian
+#print axioms PoincareMT.M35.Uniqueness.fieldHessian_pair_skew_of_killing
+#print axioms PoincareMT.M35.Uniqueness.fieldHessian_commutator
+#print axioms PoincareMT.M35.Uniqueness.killing_hessian_trace_pair
+#print axioms PoincareMT.M35.Uniqueness.inner_ricciSharp
+#print axioms PoincareMT.M35.Uniqueness.killing_hessian_trace_add_ricciSharp_eq_zero
+#print axioms PoincareMT.M35.Uniqueness.evolving_killing_field_stationary
+#print axioms PoincareMT.RepairedStandardCapExistenceData.metric_inner_antitone
+#print axioms PoincareMT.RepairedStandardCapExistenceData.tangentNorm_le_of_time_le
+#print axioms PoincareMT.RepairedStandardCapExistenceData.ball_subset_of_time_le
+#print axioms PoincareMT.LeviCivitaData.scalar_directional_bound_of_unit_bound
+#print axioms PoincareMT.LeviCivitaData.scalar_radius_directional_bound
+#print axioms PoincareMT.M35.scalar_radius_lower_on_ball
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.scalar_tendsto_at_origin_of_tendsto_off_origin
+#print axioms PoincareMT.M35.Uniqueness.axisRadialCoefficient
+#print axioms PoincareMT.M35.Uniqueness.axisAngularCoefficient
+#print axioms PoincareMT.M35.Uniqueness.rotational_axis_metric
+#print axioms PoincareMT.M35.Uniqueness.axisRadialCoefficient_pos
+#print axioms PoincareMT.M35.Uniqueness.axisAngularCoefficient_pos
+#print axioms PoincareMT.M35.Uniqueness.exists_axis_rotation
+#print axioms PoincareMT.M35.Uniqueness.standardRotation_inner
+#print axioms PoincareMT.M35.Uniqueness.standardRotation_mul
+#print axioms PoincareMT.M35.Uniqueness.standardRotation_one
+#print axioms PoincareMT.M35.Uniqueness.standardRotation_inv_apply
+#print axioms PoincareMT.M35.Uniqueness.rotational_metric_form
+#print axioms PoincareMT.M35.Uniqueness.rotational_metric_angular
+#print axioms PoincareMT.M35.Uniqueness.axisRadialCoefficient_contDiff
+#print axioms PoincareMT.M35.Uniqueness.axisAngularCoefficient_contDiff
+#print axioms PoincareMT.M35.Uniqueness.radialArclength
+#print axioms PoincareMT.M35.Uniqueness.radialArclength_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.radialArclength_strictMono
+#print axioms PoincareMT.M35.Uniqueness.radialArclength_zero
+#print axioms PoincareMT.M35.Uniqueness.pathELength_axis_eq_radialArclength
+#print axioms PoincareMT.M35.Uniqueness.edist_axis_le_radialArclength
+#print axioms PoincareMT.M35.Uniqueness.radialArclength_unbounded
+#print axioms PoincareMT.M35.Uniqueness.exists_radialArclength_eq
+#print axioms PoincareMT.M35.tendsto_cylinder_jet_of_components
+#print axioms PoincareMT.M35.metric_component_contDiffAt
+#print axioms PoincareMT.M35.exists_guarded_scalar_gradient_of_canonical
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.exists_compact_exterior_terminal_scalar_floor
+#print axioms PoincareMT.M35.Uniqueness.rotational_scalar_axis
+#print axioms PoincareMT.M35.Uniqueness.axisWarpingRadius_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.axisWarpingSlope_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.axisWarpingRadius_sq_le_of_exterior_scalar_floor
+#print axioms PoincareMT.RepairedStandardCapExistenceData.axisWarpingRadius_sq_le_remaining_time
+#print axioms PoincareMT.RepairedStandardCapExistenceData.angular_tangent_metric_tendsto_zero
+#print axioms PoincareMT.RepairedStandardCapExistenceData.scalar_tendsto_off_origin
+#print axioms PoincareMT.RepairedStandardCapExistenceData.scalar_tendsto_of_guarded_gradient
+#print axioms PoincareMT.CapCertificate.exists_transported_certificate
+#print axioms
+  PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_certificate_of_full_neck_comparisons
+#print axioms PoincareMT.M35.Uniqueness.exists_raw_distance_square_compact_exhaustion
+#print axioms PoincareMT.M35.Uniqueness.raw_scalar_nonnegative
+#print axioms PoincareMT.M35.Uniqueness.bounded_vector_heat_normSq_le
+#print axioms PoincareMT.M35.Uniqueness.bounded_vector_heat_zero
+#print axioms PoincareMT.M35.Uniqueness.killingCovector_heat_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.killingCovector_joint
+#print axioms PoincareMT.M35.Uniqueness.killing_riemannDerivative_divergence
+#print axioms PoincareMT.EpsilonNeck.axial_dist_le_between
+#print axioms PoincareMT.EpsilonNeck.axial_lipschitzOn
+#print axioms PoincareMT.EpsilonNeck.exists_axial_limit
+#print axioms PoincareMT.M35.roundCylinderTensorNormSquared_le_weighted
+#print axioms PoincareMT.M35.roundCylinderJetErrorSquared_le_weighted
+#print axioms PoincareMT.RoundCylinderFamilyClose.exists_same_epsilon_perturbation_margin
+#print axioms PoincareMT.M35.finite_inverse_metric_jets_at
+#print axioms PoincareMT.M35.finite_christoffel_jets_at
+#print axioms PoincareMT.M35.finite_jets_at_of_christoffel_hessian
+#print axioms PoincareMT.M35.finite_local_isometry_jets_at
+#print axioms PoincareMT.M35.full_neck_covariant_component_jet_bounds
+#print axioms PoincareMT.M35.full_neck_metric_error_jet_bounds
+#print axioms PoincareMT.M35.full_neck_metric_coefficient_jet_bounds
+#print axioms PoincareMT.EpsilonNeck.full_euclidean_chart_regular
+#print axioms PoincareMT.EpsilonNeck.full_euclidean_coefficient
+#print axioms PoincareMT.EpsilonNeck.exists_full_normalized_metric_realization
+#print axioms PoincareMT.EpsilonNeck.full_normalized_metric_lower
+#print axioms PoincareMT.M35.metric_jetsAt_of_component_jets
+#print axioms PoincareMT.EpsilonNeck.full_normalized_realization_jets
+#print axioms PoincareMT.M35.RadialGauge.radial_weight_translation
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_integrable
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_weighted_norm_le
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_weighted_norm_le_on_slab
+#print axioms PoincareMT.M35.RadialGauge.standardGaussianDensity_hasDerivAt
+#print axioms PoincareMT.M35.RadialGauge.integrable_standardGaussian_density_smul
+#print axioms PoincareMT.M35.RadialGauge.integral_standardGaussian_derivative
+#print axioms PoincareMT.M35.RadialGauge.heatGradientKernel_integrable
+#print axioms PoincareMT.M35.RadialGauge.heatGradientKernel_weighted_norm_le
+#print axioms PoincareMT.M35.RadialGauge.integral_pi_gaussian_slices
+#print axioms PoincareMT.M35.RadialGauge.integral_pi_gaussian_coordinate_derivative
+#print axioms PoincareMT.M35.RadialGauge.integral_stdGaussian_eq_pi
+#print axioms PoincareMT.M35.RadialGauge.integral_stdGaussian_coordinate_derivative
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_hasFDerivAt_integral
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_derivative_integral_eq_kernel
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_hasFDerivAt
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_fderiv_weighted_norm_le
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_hasDerivAt
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_second_deriv
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_hasDerivAt_time
+#print axioms PoincareMT.M35.RadialGauge.harmonicRadialOperator_mapRadius
+#print axioms PoincareMT.M35.RadialGauge.logarithmicRadialOperator_zero
+#print axioms PoincareMT.M35.RadialGauge.corrected_equation_iff
+#print axioms PoincareMT.M35.RadialGauge.expSlope_contDiff
+#print axioms PoincareMT.M35.RadialGauge.exponentialForcingQuotient_contDiff
+#print axioms PoincareMT.M35.RadialGauge.correctedForcing_eq
+#print axioms PoincareMT.M35.RadialGauge.correctedForcing_restart
+#print axioms PoincareMT.M35.RadialGauge.correctedForcing_contDiff
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_third_deriv
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_ratio_tendsto
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_deriv_tendsto
+#print axioms PoincareMT.M35.RadialGauge.mapRadius_second_deriv_tendsto
+#print axioms PoincareMT.M35.RadialGauge.semilinearSource_weighted_bound
+#print axioms PoincareMT.M35.RadialGauge.semilinearSource_weighted_lipschitz
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_comp_linearIsometryEquiv
+#print axioms PoincareMT.M35.RadialGauge.fderiv_of_orthogonal_invariant
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_invariant
+#print axioms PoincareMT.M35.RadialGauge.gaugeDuhamel_invariant
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_invariant
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_limit_invariant
+#print axioms PoincareMT.M35.RadialGauge.smooth_even_radial_trace
+#print axioms PoincareMT.M35.RadialGauge.intervalIntegrable_backwards_invSqrt
+#print axioms PoincareMT.M35.RadialGauge.integral_backwards_invSqrt
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_weighted_norm_le
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamelGradient_weighted_norm_le
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_hasFDerivAt
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_fderiv_eq
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_intervalIntegrable
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamelGradient_intervalIntegrable
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_sub
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamelGradient_sub
+#print axioms PoincareMT.M35.RadialGauge.heatC1Gain_nonneg
+#print axioms PoincareMT.M35.RadialGauge.heatC1Gain_mono
+#print axioms PoincareMT.M35.RadialGauge.exists_pos_heatC1Gain_lt
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_c1_bound
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_c1_difference_bound
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_weighted_bound
+#print axioms PoincareMT.M35.RadialGauge.gaugeDuhamel_c1_difference_bound
+#print axioms PoincareMT.M35.RadialGauge.exists_short_time_gauge_constants
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_weighted_c1_bound
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_weighted_c1_geometric
+#print axioms PoincareMT.M35.Uniqueness.killingCovectorGradient_heat_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.killingDefectTensor_heat_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.bounded_lichnerowicz_zero
+#print axioms PoincareMT.M35.Uniqueness.bounded_vector_heat_preserves_killing
+#print axioms PoincareMT.M35.Uniqueness.bounded_vector_heat_initial_killing_stationary
+#print axioms PoincareMT.M35.RadialGauge.slabSourceExtension_stronglyMeasurable
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_slabSourceExtension
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_tendsto_on_slab
+#print axioms PoincareMT.M35.RadialGauge.exists_weighted_geometric_limit
+#print axioms PoincareMT.M35.RadialGauge.exists_gaugePicard_c1_limit
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_tendsto_of_c1
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_limit_mild_equation
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_c1_difference_bound_on_slab
+#print axioms PoincareMT.M35.RadialGauge.gaugeDuhamel_c1_difference_bound_on_slab
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_slab_geometric
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_contDiff
+#print axioms PoincareMT.M35.RadialGauge.parametrizedGaugeSource_contDiff
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_uniform_bounded_derivatives
+#print axioms PoincareMT.M35.RadialGauge.spatial_fderiv_stronglyMeasurable
+#print axioms PoincareMT.M35.RadialGauge.spatial_iteratedFDeriv_stronglyMeasurable
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_stronglyMeasurable
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_contDiff
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_iteratedFDeriv_norm_le
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_contDiff_and_iterated_bound
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_slab_bounded_derivatives
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_stronglyMeasurable
+#print axioms PoincareMT.M35.RadialGauge.PicardSlabControl.source
+#print axioms PoincareMT.M35.RadialGauge.PicardSlabControl.duhamel
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_slab_control
+#print axioms PoincareMT.M35.RadialGauge.exists_gauge_mild_solution
+#print axioms PoincareMT.M35.RadialGauge.integral_stdGaussian_covector_trace
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_time_continuous
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_hasDerivAt_time_integral
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_hasDerivAt_trace
+#print axioms PoincareMT.M35.RadialGauge.euclideanLaplacian_heatAverage
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_solves_heat
+#print axioms PoincareMT.M35.RadialGauge.heatAverage_time_lipschitz
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_fderiv_eq
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_fderiv_norm_le
+#print axioms PoincareMT.M35.RadialGauge.gaugeSource_weighted_fderiv_bound
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_fderiv_commutes
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_weighted_hessian_bound
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_weighted_hessian_bound
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_solves_heat
+#print axioms PoincareMT.M35.RadialGauge.euclideanLaplacian_heatDuhamel
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_joint_continuous
+#print axioms PoincareMT.M35.RadialGauge.heatDuhamel_fderiv_slab_continuous
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_limit_joint_continuous
+#print axioms PoincareMT.M35.RadialGauge.euclideanGauge_sub_id_fderiv_bound
+#print axioms PoincareMT.M35.RadialGauge.euclideanGauge_approximates_id
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_weighted_hessian_geometric
+#print axioms PoincareMT.M35.RadialGauge.gaugePicard_limit_contDiff_two
+#print axioms PoincareMT.M35.Uniqueness.initial_linear_rotation_normSq_le
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotationGenerator_inner_zero
+#print axioms PoincareMT.M35.Uniqueness.initial_coordinateRotationGenerator_normSq_le
+#print axioms PoincareMT.M35.Uniqueness.linear_killing_path_preserves_metric
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation_hasDerivAt_time
+#print axioms PoincareMT.M35.Uniqueness.coordinateRotation_isometry_of_killing
+#print axioms PoincareMT.M35.Uniqueness.killingCovectorGradient_lichnerowicz_hasDerivAt
+#print axioms PoincareMT.M35.Uniqueness.killingCovectorGradient_normSq
+#print axioms PoincareMT.M35.Uniqueness.vector_heat_normSq_dissipation
+#print axioms PoincareMT.M35.Uniqueness.vector_heat_bernstein_subsolution
+#print axioms PoincareMT.M35.Uniqueness.raw_quadratic_heat_weighted_bound
+#print axioms PoincareMT.M35.Uniqueness.raw_quadratic_heat_bound
+#print axioms PoincareMT.M35.Uniqueness.vector_heat_product_reaction
+#print axioms PoincareMT.M35.Uniqueness.bounded_vector_heat_gradient_weighted
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_cap_certificate
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_full_neck_family_close
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_full_standard_evolving_neck
+#print axioms PoincareMT.CapCertificate.generalized_canonical_control
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_limit_full_neck_canonical
+#print axioms PoincareMT.M35.OrdinaryRealization.blowupSequence_limit_cap_canonical
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_unit_time_canonical_constants
+#print axioms PoincareMT.M35.OrdinaryRealization.exists_unit_time_scalar_estimates
+#print axioms PoincareMT.RepairedStandardCapExistenceData.scalar_tendsto_from_unit_time
+#print axioms PoincareMT.RepairedStandardCapExistenceData.scalar_lower_rate_from_unit_time
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.exists_normalized_orbit_radius_bound_all_points
+#print axioms
+  PoincareMT.RepairedStandardCapExistenceData.axisWarpingSlope_tendsto_zero_of_normalized_distance
